@@ -79,7 +79,7 @@ const getVersions = () => {
 };
 
 const install = () => {
-  shell.exec('yarn --cwd .. install --ignore-scripts');
+  shell.exec('yarn install --ignore-scripts');
 };
 
 module.exports = {

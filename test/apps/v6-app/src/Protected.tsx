@@ -12,7 +12,7 @@
 
 // implement with "withOktaAuth" HOC
 import * as React from 'react';
-import { OktaAuth } from '@okta/okta-auth-js';
+import { OktaAuth } from '@okta-dfuhriman/okta-auth-js';
 import { withOktaAuth } from '@okta/okta-react';
 
 const Protected: React.FC<{ oktaAuth: OktaAuth }> = ({ oktaAuth }) => {

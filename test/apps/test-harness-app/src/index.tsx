@@ -12,7 +12,7 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { OktaAuth } from '@okta/okta-auth-js';
+import { OktaAuth } from '@okta-dfuhriman/okta-auth-js';
 import './index.css';
 import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';

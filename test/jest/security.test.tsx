@@ -16,7 +16,7 @@ import { act } from 'react-dom/test-utils';
 import { MemoryRouter } from 'react-router-dom';
 import Security from '../../src/Security';
 import { useOktaAuth } from '../../src/OktaContext';
-import { AuthState, OktaAuth } from '@okta/okta-auth-js';
+import { AuthState, OktaAuth } from '@okta-dfuhriman/okta-auth-js';
 
 declare global {
   let SKIP_VERSION_CHECK: any;
@@ -114,7 +114,7 @@ describe('<Security />', () => {
       };
 
       const wrapper = mount(<Security {...mockProps} />);
-      expect(wrapper.find(Security).text().trim()).toBe(`AuthSdkError: 
+      expect(wrapper.find(Security).text().trim()).toBe(`AuthSdkError:
         Passed in oktaAuth is not compatible with the SDK,
         minimum supported okta-auth-js version is 5.3.1.`
       );
@@ -154,7 +154,7 @@ describe('<Security />', () => {
     const MyComponent = jest.fn().mockImplementation(() => {
       const oktaProps = useOktaAuth();
       expect(oktaProps.authState).toBe(initialAuthState);
-      return null; 
+      return null;
     });
     mount(
       <MemoryRouter>
@@ -229,7 +229,7 @@ describe('<Security />', () => {
     callbacks.push(() => {
       // dummy subscriber that should be preserved after `<Security />` unmount
     });
-    oktaAuth.authStateManager.getAuthState = jest.fn().mockImplementation( () => { 
+    oktaAuth.authStateManager.getAuthState = jest.fn().mockImplementation( () => {
       return mockAuthStates[stateCount];
     });
     oktaAuth.authStateManager.subscribe = jest.fn().mockImplementation(fn => {

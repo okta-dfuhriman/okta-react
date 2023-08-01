@@ -11,7 +11,7 @@
  */
 
 import * as React from 'react';
-import { AuthSdkError, AuthState, OktaAuth } from '@okta/okta-auth-js';
+import { AuthSdkError, AuthState, OktaAuth } from '@okta-dfuhriman/okta-auth-js';
 import OktaContext, { OnAuthRequiredFunction, RestoreOriginalUriFunction } from './OktaContext';
 import OktaError from './OktaError';
 import { compare as compareVersions } from 'compare-versions';
@@ -26,15 +26,15 @@ declare const SKIP_VERSION_CHECK: string;
 
 const Security: React.FC<{
   oktaAuth: OktaAuth,
-  restoreOriginalUri: RestoreOriginalUriFunction, 
+  restoreOriginalUri: RestoreOriginalUriFunction,
   onAuthRequired?: OnAuthRequiredFunction,
   children?: React.ReactNode
-} & React.HTMLAttributes<HTMLDivElement>> = ({ 
+} & React.HTMLAttributes<HTMLDivElement>> = ({
   oktaAuth,
-  restoreOriginalUri, 
-  onAuthRequired, 
+  restoreOriginalUri,
+  onAuthRequired,
   children
-}) => { 
+}) => {
   const [authState, setAuthState] = React.useState(() => {
     if (!oktaAuth) {
       return null;
@@ -120,9 +120,9 @@ const Security: React.FC<{
   }
 
   return (
-    <OktaContext.Provider value={{ 
-      oktaAuth, 
-      authState, 
+    <OktaContext.Provider value={{
+      oktaAuth,
+      authState,
       _onAuthRequired: onAuthRequired
     }}>
       {children}

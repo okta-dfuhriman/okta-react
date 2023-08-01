@@ -10,7 +10,7 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 import * as React from 'react';
-import { AuthState, OktaAuth } from '@okta/okta-auth-js';
+import { AuthState, OktaAuth } from '@okta-dfuhriman/okta-auth-js';
 
 export type OnAuthRequiredFunction = (oktaAuth: OktaAuth) => Promise<void> | void;
 export type OnAuthResumeFunction = () => void;

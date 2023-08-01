@@ -12,7 +12,7 @@
 
 import React, { useEffect } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
-import { toRelativeUrl } from '@okta/okta-auth-js';
+import { toRelativeUrl } from '@okta-dfuhriman/okta-auth-js';
 import { Outlet } from 'react-router-dom';
 
 

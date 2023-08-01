@@ -40,7 +40,7 @@ const commonPlugins = [
     },
     preventAssignment: true
   }),
-  cleanup({ 
+  cleanup({
     extensions,
     comments: 'none'
   })
@@ -72,7 +72,7 @@ export default [
       globals: {
         'react': 'React',
         'react-router-dom': 'ReactRouterDOM',
-        '@okta/okta-auth-js': 'OktaAuth'
+        '@okta-dfuhriman/okta-auth-js': 'OktaAuth'
       }
     }
   },

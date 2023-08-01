@@ -11,7 +11,7 @@
  */
 
 import * as React from 'react';
-import { AuthTransaction } from '@okta/okta-auth-js';
+import { AuthTransaction } from '@okta-dfuhriman/okta-auth-js';
 import { useOktaAuth } from '@okta/okta-react';
 
 const SessionTokenLogin: React.FC = () => {

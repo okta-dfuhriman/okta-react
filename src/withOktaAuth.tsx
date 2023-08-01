@@ -14,9 +14,9 @@ import * as React from 'react';
 import { useOktaAuth, IOktaContext } from './OktaContext';
 
 const withOktaAuth = <P extends IOktaContext>(
-  ComponentToWrap: React.ComponentType<P>
-): React.FC<Omit<P, keyof IOktaContext>> => { 
-  const WrappedComponent = (props: Omit<P, keyof IOktaContext>) => { 
+  ComponentToWrap: React.FC<P>
+): React.FC<Omit<P, keyof IOktaContext>> => {
+  const WrappedComponent = (props: Omit<P, keyof IOktaContext>) => {
     const oktaAuthProps = useOktaAuth();
     return <ComponentToWrap {...oktaAuthProps as IOktaContext } {...props as P} />;
   };

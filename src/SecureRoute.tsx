@@ -13,7 +13,7 @@
 import * as React from 'react';
 import { useOktaAuth, OnAuthRequiredFunction } from './OktaContext';
 import * as ReactRouterDom from 'react-router-dom';
-import { toRelativeUrl, AuthSdkError } from '@okta/okta-auth-js';
+import { toRelativeUrl, AuthSdkError } from '@okta-dfuhriman/okta-auth-js';
 import OktaError from './OktaError';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -24,19 +24,19 @@ if ('useRouteMatch' in ReactRouterDom) {
   useMatch = (ReactRouterDom as any)['useRouteMatch' in ReactRouterDom ? 'useRouteMatch' : ''];
 } else {
   // throw when useMatch is triggered
-  useMatch = () => { 
+  useMatch = () => {
     throw new AuthSdkError('Unsupported: SecureRoute only works with react-router-dom v5 or any router library with compatible APIs. See examples under the "samples" folder for how to implement your own custom SecureRoute Component.');
   };
 }
 
 const SecureRoute: React.FC<{
   onAuthRequired?: OnAuthRequiredFunction;
-  errorComponent?: React.ComponentType<{ error: Error }>;
-} & ReactRouterDom.RouteProps & React.HTMLAttributes<HTMLDivElement>> = ({ 
+  errorComponent?: React.FC<{ error: Error }>;
+} & ReactRouterDom.RouteProps & React.HTMLAttributes<HTMLDivElement>> = ({
   onAuthRequired,
   errorComponent,
   ...routeProps
-}) => { 
+}) => {
   const { oktaAuth, authState, _onAuthRequired } = useOktaAuth();
   const match = useMatch(routeProps);
   const pendingLogin = React.useRef(false);
@@ -76,17 +76,17 @@ const SecureRoute: React.FC<{
     }
 
     // Start login if app has decided it is not logged in and there is no pending signin
-    if(!authState.isAuthenticated) { 
+    if(!authState.isAuthenticated) {
       handleLogin().catch(err => {
         setHandleLoginError(err as Error);
       });
-    }  
+    }
 
   }, [
     authState,
-    oktaAuth, 
-    match, 
-    onAuthRequired, 
+    oktaAuth,
+    match,
+    onAuthRequired,
     _onAuthRequired
   ]);
 

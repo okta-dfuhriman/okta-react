@@ -17,7 +17,7 @@ import { act } from 'react-dom/test-utils';
 import { render } from 'react-dom';
 import SecureRoute from '../../src/SecureRoute';
 import OktaContext from '../../src/OktaContext';
-import { AuthSdkError } from '@okta/okta-auth-js';
+import { AuthSdkError } from '@okta-dfuhriman/okta-auth-js';
 
 jest.mock('react-router-dom', () => ({
   __esModule: true,
@@ -27,7 +27,7 @@ jest.mock('react-router-dom', () => ({
 class ErrorBoundary extends React.Component {
   constructor(props: any) {
     super(props);
-    this.state = { 
+    this.state = {
       error: null
     } as {
       error: AuthSdkError | null
@@ -44,7 +44,7 @@ class ErrorBoundary extends React.Component {
       return <p>{ this.state.error.toString() }</p>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 
@@ -73,7 +73,7 @@ describe('react-router-dom v6', () => {
       start: jest.fn(),
     };
   });
-  
+
   it('throws unsupported error', async () => {
     const container = document.createElement('div');
     await act(async () => {

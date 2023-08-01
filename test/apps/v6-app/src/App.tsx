@@ -12,7 +12,7 @@
 
 import * as React from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
+import { OktaAuth, toRelativeUrl } from '@okta-dfuhriman/okta-auth-js';
 import { Security, LoginCallback } from '@okta/okta-react';
 import { SecureRoute } from './SecureRoute';
 import Home from './Home';
@@ -21,9 +21,9 @@ import CustomLogin from './CustomLogin';
 import WidgetLogin from './WidgetLogin';
 import SessionTokenLogin from './SessionTokenLogin';
 
-const App: React.FC<{ 
-  oktaAuth: OktaAuth; 
-  customLogin: boolean; 
+const App: React.FC<{
+  oktaAuth: OktaAuth;
+  customLogin: boolean;
   baseUrl: string;
 }> = ({ oktaAuth, customLogin, baseUrl }) => {
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ const App: React.FC<{
     navigate('/login');
   };
 
-  const onAuthResume = async () => { 
+  const onAuthResume = async () => {
     navigate('/widget-login');
   };
 
@@ -55,8 +55,8 @@ const App: React.FC<{
             <Route path='' element={<Protected />} />
           </Route>
           <Route path='/implicit/callback' element={<LoginCallback />} />
-          <Route path='/pkce/callback' element={<LoginCallback 
-              onAuthResume={ onAuthResume } 
+          <Route path='/pkce/callback' element={<LoginCallback
+              onAuthResume={ onAuthResume }
               loadingElement={ <p id='login-callback-loading'>Loading...</p> }
             />}/>
           <Route path='/' element={<Home />} />

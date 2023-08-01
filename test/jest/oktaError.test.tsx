@@ -13,7 +13,7 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 import OktaError from '../../src/OktaError';
-import { AuthSdkError, AuthApiError, OAuthError } from '@okta/okta-auth-js';
+import { AuthSdkError, AuthApiError, OAuthError } from '@okta-dfuhriman/okta-auth-js';
 
 describe('<OktaError />', () => {
     it('renders a generic error', () => {
@@ -34,9 +34,9 @@ describe('<OktaError />', () => {
     });
     it('renders an AuthApiError', () => {
       const errorSummary = 'I am a test error message';
-      const errorCode = '400'; 
+      const errorCode = '400';
       const errorLink = 'http://errorlink.com';
-      const errorId = 'fake error id'; 
+      const errorId = 'fake error id';
       const errorCauses = ['fake error cause'];
       const error = new AuthApiError({ errorSummary, errorCode, errorLink, errorId, errorCauses });
       const wrapper = mount(
@@ -54,4 +54,3 @@ describe('<OktaError />', () => {
       expect(wrapper.text()).toBe(`OAuthError: ${errorSummary}`);
     });
 });
-

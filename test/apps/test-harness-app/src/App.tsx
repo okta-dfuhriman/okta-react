@@ -12,7 +12,7 @@
 
 import * as React from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
-import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
+import { OktaAuth, toRelativeUrl } from '@okta-dfuhriman/okta-auth-js';
 import { Security, LoginCallback, SecureRoute } from '@okta/okta-react';
 import Home from './Home';
 import Protected from './Protected';
@@ -20,9 +20,9 @@ import CustomLogin from './CustomLogin';
 import WidgetLogin from './WidgetLogin';
 import SessionTokenLogin from './SessionTokenLogin';
 
-const App: React.FC<{ 
-  oktaAuth: OktaAuth; 
-  customLogin: boolean; 
+const App: React.FC<{
+  oktaAuth: OktaAuth;
+  customLogin: boolean;
   baseUrl: string;
 }> = ({ oktaAuth, customLogin, baseUrl }) => {
   const history = useHistory();
@@ -31,7 +31,7 @@ const App: React.FC<{
     history.push('/login');
   };
 
-  const onAuthResume = async () => { 
+  const onAuthResume = async () => {
     history.push('/widget-login');
   };
 
@@ -48,16 +48,16 @@ const App: React.FC<{
       >
         <Switch>
           <Route path='/login' component={CustomLogin} />
-          <Route path='/widget-login' render={ (props) => 
+          <Route path='/widget-login' render={ (props) =>
             <WidgetLogin {...props} baseUrl={baseUrl} />
           } />
           <Route path='/sessionToken-login' component={SessionTokenLogin} />
           <SecureRoute exact path='/protected' component={Protected} />
           <Route path='/implicit/callback' component={LoginCallback} />
-          <Route path='/pkce/callback' render={ (props) => 
-            <LoginCallback 
-              {...props} 
-              onAuthResume={ onAuthResume } 
+          <Route path='/pkce/callback' render={ (props) =>
+            <LoginCallback
+              {...props}
+              onAuthResume={ onAuthResume }
               loadingElement={ <p id='login-callback-loading'>Loading...</p> }
             />
           } />
